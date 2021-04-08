@@ -1,0 +1,91 @@
+{% extends 'base.html' %}
+{% block body %}
+{% load static %}
+  
+	
+
+     <!-- ==============================================
+	 Dashboard Section
+	 =============================================== -->
+     <div class="featured-users">
+	  <div class="container">
+	   <div class="row">
+			<div class="section-title" style="padding-top: 20px;">
+				<h1>Organization :- {{ party.party_name }}</h1>
+			</div>
+	   
+		  <!-- START OF INTERNAL ROW --><div class="row">
+	   {% for i in party.nominance_set.all %}
+	   <div class="col-lg-4">	
+	    <span id="comment458484136448"></span>
+				  
+         <div class="text-center card-box">
+		  <div class="clearfix"></div>
+		  <div class="member-card">
+		   <div class="thumb-xl member-thumb m-b-10 center-block">
+		    <img src="{{ i.image.url }}" class="img-circle img-thumbnail" alt="profile-image">
+			<i class="mdi mdi-star-circle member-star text-success" title="verified user"></i>
+		   </div>
+
+		   <div class="">
+			<h4 class="m-b-5">{{ i.nomi_name }}</h4>
+			   <h4 class="m-b-5">Place: {{ i.place }}</h4>
+			<p class="text-mint"><span class="text-mint"> {{ i.party_data.party_name }}</span></p>
+			</div>
+
+			
+		   <a href="../manifesto/458484136448.html" class="kafe-btn kafe-btn-mint-small"><i class="fa fa-user-secret" aria-hidden="true"></i> View Manifesto</a>
+		  </div>
+		 </div>
+	   </div><!-- /.col-lg-4 -->
+		   {% endfor %}
+
+					 
+	   
+	   			 <p>No Content Available.</p>	        </div><!-- /.row -->
+	    </div><!-- /.container -->
+	</div>	 	 
+	 
+     <!-- Include footer.php. Contains footer content. -->
+ 	 
+	
+	 <!-- ==============================================
+	 Footer Section
+	 =============================================== -->
+	 <footer class="footerWhite">
+
+      <!-- COPY RIGHT -->
+      <div class="clearfix copyRight">
+       <div class="container">
+        <div class="row">
+         
+		 <div class="col-xs-12">
+          <div class="copyRightWrapper">
+           <div class="row">
+		   
+            <div class="col-sm-5 col-sm-push-7 col-xs-12">
+			 <ul class="list-inline socialLink">
+			  <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+			  <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+			  <li><a href="#"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
+			  <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+			 </ul>
+            </div><!-- /col-sm-5 -->
+			
+		    <div class="col-sm-7 col-sm-pull-5 col-xs-12">
+			 <div class="copyRightText">
+			  <p>Copyright © Voting&nbsp; 2018. All Rights Reserved</p>
+			 </div>
+		    </div><!-- /col-sm-7 -->
+		  
+           </div><!-- /row -->
+          </div><!-- /copyRightWrapper -->
+         </div><!-- /col-xs-2 -->
+
+        </div><!-- /row -->
+       </div><!-- /container -->
+      </div><!-- /copyRight -->
+	  
+    </footer>	
+	
+    {% endblock %}

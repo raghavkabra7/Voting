@@ -1,0 +1,170 @@
+{% extends 'base.html' %}
+{% block body %}
+{% load static %}
+	
+
+	 <!-- ==============================================
+	 Header Section
+	 =============================================== -->	
+     <section class="tr-banner section-before bg-image" style="
+
+  background: url('{% static 'source/admin/uploads/1517252709.jpg' %}') no-repeat center center fixed;
+  
+  background-size: cover;
+  background-position: center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  color: #fff;
+  width: 100%;
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: #fff;
+  padding: 120px 0;">
+      <div class="container">
+       <div class="banner-content text-center">
+        <h1>Online Voting Platform</h1>
+        <h2>Search Organizations and Positions.</h2>
+
+        <form class="form-horizontal" method="post" action="http://www.themashabrand.com/scripts/Voting/search"> 
+		 <div class="col-md-5 no-padd"> 
+		  <div class="input-group"> 
+			<select name="organizationid" type="text" class="form-control" onclick="ajaxfunction(this.value)">
+			 <option value = "0">Nothing Selected</option><option value = "214407771051">The Masha Brand Company</option><br />
+<b>Notice</b>:  Undefined variable: categoryname in <b>/home/fluffsco/public_html/scripts/Voting/source/frontend/home.php</b> on line <b>58</b><br />
+<option value = "148404653372">Harvard Campus Election</option><br />
+<b>Notice</b>:  Undefined variable: categoryname in <b>/home/fluffsco/public_html/scripts/Voting/source/frontend/home.php</b> on line <b>58</b><br />
+<option value = "191158759771">Republican National Committee</option><br />
+<b>Notice</b>:  Undefined variable: categoryname in <b>/home/fluffsco/public_html/scripts/Voting/source/frontend/home.php</b> on line <b>58</b><br />
+<option value = "398673516259">Democratic National Committee</option><br />
+<b>Notice</b>:  Undefined variable: categoryname in <b>/home/fluffsco/public_html/scripts/Voting/source/frontend/home.php</b> on line <b>58</b><br />
+<option value = "357540792223">Women's March</option><br />
+<b>Notice</b>:  Undefined variable: categoryname in <b>/home/fluffsco/public_html/scripts/Voting/source/frontend/home.php</b> on line <b>58</b><br />
+<option value = "340866181644">Grammy Awards</option><br />
+<b>Notice</b>:  Undefined variable: categoryname in <b>/home/fluffsco/public_html/scripts/Voting/source/frontend/home.php</b> on line <b>58</b><br />
+<option value = "162452339739">Oscars Awards</option><br />
+<b>Notice</b>:  Undefined variable: categoryname in <b>/home/fluffsco/public_html/scripts/Voting/source/frontend/home.php</b> on line <b>58</b><br />
+<option value = "283787111660">Book Club</option><br />
+<b>Notice</b>:  Undefined variable: categoryname in <b>/home/fluffsco/public_html/scripts/Voting/source/frontend/home.php</b> on line <b>58</b><br />
+<option value = "171039999680">Women's Club</option>	
+			</select>
+		  </div>
+		 </div>
+		 <div class="col-md-5 no-padd"> 
+		  <div class="input-group"> 
+			<select name="positionid" type="text" class="form-control" id="sub">
+
+			</select>
+		  </div>
+		 </div>
+		 <div class="col-md-2 no-padd"> 
+		  <div class="input-group"> 
+          <input type="hidden" name="token" value="19335b9e011e497ed9a6553255232bcc" />
+		   <button type="submit" class="kafe-btn kafe-btn-mint full-width">Search</button> 
+		  </div>
+		 </div>
+		</form>
+		
+       </div><!--/. banner-content -->
+      </div><!-- /.container -->
+     </section>		
+
+	 <!-- ==============================================
+	 Feautured Car Section
+	 =============================================== -->
+     <section class="featured-users">	
+      <div class="container">
+	  <div class="row">
+			<div class="section-title" style="padding-top: 20px;">
+				<h1>Organizations</h1>
+			</div>
+	  </div>
+	   
+		  <!-- START OF INTERNAL ROW --><div class="row">
+	   
+
+					 
+	   {% for i in party %}
+	   <div class="col-lg-4">
+        <div class="box-home clearfix">
+         <a href="{% url 'pd' i.id %}"></a>
+          <img src="{{ i.logo.url }}" alt="" class="img-resonsive">
+         <h3>{{ i.party_name }}</h3>
+
+        </div><!-- /box-home -->
+	   </div><!-- /.col-lg-4 -->
+          {% endfor %}
+
+	   
+
+
+	   
+
+
+
+					 </div><!-- END OF INTERNAL ROW -->
+      </div>
+     </section>
+	 
+     <!-- Include footer.php. Contains footer content. -->
+ 	 
+	
+	 <!-- ==============================================
+	 Footer Section
+	 =============================================== -->
+	 <footer class="footerWhite">
+
+      <!-- COPY RIGHT -->
+      <div class="clearfix copyRight">
+       <div class="container">
+        <div class="row">
+         
+		 <div class="col-xs-12">
+          <div class="copyRightWrapper">
+           <div class="row">
+		   
+            <div class="col-sm-5 col-sm-push-7 col-xs-12">
+			 <ul class="list-inline socialLink">
+			  <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+			  <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+			  <li><a href="#"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
+			  <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+			 </ul>
+            </div><!-- /col-sm-5 -->
+			
+		    <div class="col-sm-7 col-sm-pull-5 col-xs-12">
+			 <div class="copyRightText">
+			  <p>Copyright © Voting&nbsp; 2018. All Rights Reserved</p>
+			 </div>
+		    </div><!-- /col-sm-7 -->
+		  
+           </div><!-- /row -->
+          </div><!-- /copyRightWrapper -->
+         </div><!-- /col-xs-2 -->
+
+        </div><!-- /row -->
+       </div><!-- /container -->
+      </div><!-- /copyRight -->
+	  
+    </footer>
+
+<script type="text/javascript">
+	    function ajaxfunction(parent)
+	    {
+	        $.ajax({
+			    type: "POST",
+	            url: "http://www.themashabrand.com/scripts/Voting/source/admin/template/requests/process.php",
+			    data: "parent="+parent,
+			    cache: false,
+	            success: function(data) {
+	                $("#sub").html(data);
+	            }
+	        });
+	    }
+	</script>
+	
+   {% endblock %}

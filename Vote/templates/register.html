@@ -1,0 +1,281 @@
+      {% extends 'base.html' %}
+{% block body %}
+{% load static %}
+
+ 
+ 	 <script language="Javascript">
+
+        // Declaring valid date character, minimum year and maximum year
+        var dtCh = "/";
+        var minYear = 1900;
+        var maxYear = 2100;
+
+        function isInteger(s) {
+            var i;
+            for (i = 0; i < s.length; i++) {
+                // Check that current character is number.
+                var c = s.charAt(i);
+                if (((c < "0") || (c > "9"))) return false;
+            }
+            // All characters are numbers.
+            return true;
+        }
+
+        function stripCharsInBag(s, bag) {
+            var i;
+            var returnString = "";
+            // Search through string's characters one by one.
+            // If character is not in bag, append to returnString.
+            for (i = 0; i < s.length; i++) {
+                var c = s.charAt(i);
+                if (bag.indexOf(c) == -1) returnString += c;
+            }
+            return returnString;
+        }
+
+        function daysInFebruary(year) {
+            // February has 29 days in any year evenly divisible by four,
+            // EXCEPT for centurial years which are not also divisible by 400.
+            return (((year % 4 == 0) && ((!(year % 100 == 0)) || (year % 400 == 0))) ? 29 : 28);
+        }
+        function DaysArray(n) {
+            for (var i = 1; i <= n; i++) {
+                this[i] = 31
+                if (i == 4 || i == 6 || i == 9 || i == 11) { this[i] = 30 }
+                if (i == 2) { this[i] = 29 }
+            }
+            return this
+        }
+
+        function isDate(dtStr) {
+            var daysInMonth = DaysArray(12)
+            var pos1 = dtStr.indexOf(dtCh)
+            var pos2 = dtStr.indexOf(dtCh, pos1 + 1)
+            var strDay = dtStr.substring(0, pos1)
+            var strMonth = dtStr.substring(pos1 + 1, pos2)
+            var strYear = dtStr.substring(pos2 + 1)
+            strYr = strYear
+            if (strDay.charAt(0) == "0" && strDay.length > 1) strDay = strDay.substring(1)
+            if (strMonth.charAt(0) == "0" && strMonth.length > 1) strMonth = strMonth.substring(1)
+            for (var i = 1; i <= 3; i++) {
+                if (strYr.charAt(0) == "0" && strYr.length > 1) strYr = strYr.substring(1)
+            }
+            month = parseInt(strMonth)
+            day = parseInt(strDay)
+            year = parseInt(strYr)
+            if (pos1 == -1 || pos2 == -1) {
+                alert("The date format should be : dd/mm/yyyy")
+                return false
+            }
+            if (strMonth.length < 1 || month < 1 || month > 12) {
+                alert("Please enter a valid month")
+                return false
+            }
+            if (strDay.length < 1 || day < 1 || day > 31 || (month == 2 && day > daysInFebruary(year)) || day > daysInMonth[month]) {
+                alert("Please enter a valid day")
+                return false
+            }
+            if (strYear.length != 4 || year == 0 || year < minYear || year > maxYear) {
+                alert("Please enter a valid 4 digit year between " + minYear + " and " + maxYear)
+                return false
+            }
+            if (dtStr.indexOf(dtCh, pos2 + 1) != -1 || isInteger(stripCharsInBag(dtStr, dtCh)) == false) {
+                alert("Please enter a valid date")
+                return false
+            }
+            return true
+        }
+
+        function ValidateForm() {
+            var dt = document.formname.DOB
+
+
+            if (isDate(dt.value) == false) {
+                dt.focus()
+                return false
+            }
+            return true
+        }
+</script>
+     <!-- ==============================================
+	 Header
+	 =============================================== -->	 
+	 <header class="header-login top-page" style="
+
+  background:url('{% static 'source/admin/uploads/1517252709.jpg' %}') no-repeat center center fixed;
+  background-size: cover;
+  background-position: center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  color: #fff;
+  height: 30vh;
+  width: 100%;
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;">
+      <div class="container">
+	   <div class="content">
+	    <div class="row">
+	     <h1 class="revealOnScroll" data-animation="fadeInDown"> Voting</h1>
+        </div><!-- /.row -->
+       </div><!-- /.content -->
+	  </div><!-- /.container -->
+     </header><!-- /header -->
+	 
+     <!-- ==============================================
+     Banner Login Section
+     =============================================== -->
+	 <section class="banner-login">
+	  <div class="container">
+	  		  	
+	   <div class="row">
+	   
+	    <main class="main main-signup col-lg-12">
+	     <div class="col-lg-6 col-lg-offset-3 text-center">
+				{% if error %}
+			 <script>
+				 alert("This Number is already registred.")
+			 </script>
+			 {% endif %}
+
+		  <div class="form-sign">
+			   {% if error2 %}
+			<h1 style="color: white;">Password not Match</h1>
+			 {% endif %}
+		   <form method="post" action="" enctype ="multipart/form-data" name ='formname' onsubmit="return ValidateForm();">
+			   {% csrf_token %}
+
+		    <div class="form-head">
+			 <h3>Register</h3>
+			</div><!-- /.form-head -->
+            <div class="form-body">            	
+            	
+			
+             <div class="form-row">
+			  <div class="form-controls">
+			   <input type="text" name="name" class="field" value="" placeholder="Full Name">
+			  </div><!-- /.form-controls -->
+             </div><!-- /.form-row -->		
+             
+             <div class="form-row">
+			  <div class="form-controls">
+			   <input type="text" name="email" class="field" value="" placeholder="Email (Option)">
+			  </div><!-- /.form-controls -->
+             </div><!-- /.form-row -->
+             
+		     <div class="form-row">
+		      <div class="form-controls">
+			   <input type="text" name="Mobail" class="field" value="" placeholder="Mobail no.">
+			  </div><!-- /.form-controls -->
+		     </div><!-- /.form-row -->
+
+				  <div class="form-row">
+		      <div class="form-controls">
+			   <input type="text" name="aadhar" class="field" value="" placeholder="Aadhar No.">
+			  </div><!-- /.form-controls -->
+		     </div>
+
+					 <div class="form-row">
+			  <div class="form-controls">
+			   <select class="field" name="id_proof">
+				   <option value="Aadhar card">Aadhar card</option>
+				   	   <option value="pen card">pen card</option>
+				   	   <option value="Voter id">Voter id</option>
+			   </select>
+			  </div><!-- /.form-controls -->
+             </div>
+				<div class="form-row">
+		      <div class="form-controls">
+			   <input type="file" name="image" class="field"  >
+			  </div><!-- /.form-controls -->
+		     </div>
+
+
+				  <div class="form-row">
+		      <div class="form-controls">
+			   <input type="text" name="DOB" class="field" value="" placeholder="Date OF Birth">
+			  </div><!-- /.form-controls -->
+		     </div>
+
+
+			 
+             <div class="form-row">
+			  <div class="form-controls">
+			   <input type="password" name="password" class="field" placeholder="Password">
+			  </div><!-- /.form-controls -->
+             </div><!-- /.form-row -->
+
+
+
+			 <div class="form-row">
+			  <div class="form-controls">
+			   <input type="password" name="confirmPassword" class="field" placeholder="Confirm Password">
+			  </div><!-- /.form-controls -->
+             </div><!-- /.form-row -->
+		   
+			 </div><!-- /.form-body -->
+	
+			 <div class="form-foot">
+			  <div class="form-actions">
+               <input type="hidden" name="token" value="07e4d9a2f673f6fc47c9b873b4ec5896" />
+			   <input type="submit" name="register" value="Register" class="kafe-btn kafe-btn-default full-width">
+			  </div><!-- /.form-actions -->
+			 </div><!-- /.form-foot -->
+		   </form>
+		   
+		  </div><!-- /.form-sign -->
+	     </div><!-- /.col-lg-6 -->
+        </main>
+		
+	   </div><!-- /.row -->
+	  </div><!-- /.container -->
+     </section><!-- /section --> 	
+
+	 
+     <!-- Include footer.php. Contains footer content. -->
+ 	 
+	
+	 <!-- ==============================================
+	 Footer Section
+	 =============================================== -->
+	 <footer class="footerWhite">
+
+      <!-- COPY RIGHT -->
+      <div class="clearfix copyRight">
+       <div class="container">
+        <div class="row">
+         
+		 <div class="col-xs-12">
+          <div class="copyRightWrapper">
+           <div class="row">
+		   
+            <div class="col-sm-5 col-sm-push-7 col-xs-12">
+			 <ul class="list-inline socialLink">
+			  <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+			  <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+			  <li><a href="#"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
+			  <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+			 </ul>
+            </div><!-- /col-sm-5 -->
+			
+		    <div class="col-sm-7 col-sm-pull-5 col-xs-12">
+			 <div class="copyRightText">
+			  <p>Copyright © Voting&nbsp; 2018. All Rights Reserved</p>
+			 </div>
+		    </div><!-- /col-sm-7 -->
+		  
+           </div><!-- /row -->
+          </div><!-- /copyRightWrapper -->
+         </div><!-- /col-xs-2 -->
+
+        </div><!-- /row -->
+       </div><!-- /container -->
+      </div><!-- /copyRight -->
+	  
+    </footer>	
+	
+      {% endblock %}

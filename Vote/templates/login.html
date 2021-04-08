@@ -1,0 +1,156 @@
+  {% extends 'base.html' %}
+{% block body %}
+{% load static %}
+ 	 
+     <!-- ==============================================
+	 Header
+	 =============================================== -->	 
+	 <header class="header-login top-page" style="
+
+  background: url('{% static 'source/admin/uploads/1517252709.jpg' %}') no-repeat center center fixed;
+  background-size: cover;
+  background-position: center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  color: #fff;
+  height: 30vh;
+  width: 100%;
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;">
+      <div class="container">
+	   <div class="content">
+	    <div class="row">
+	     <h1 class="revealOnScroll" data-animation="fadeInDown"> Voting</h1>
+        </div><!-- /.row -->
+       </div><!-- /.content -->
+	  </div><!-- /.container -->
+     </header><!-- /header -->
+	 
+     <!-- ==============================================
+     Banner Login Section
+     =============================================== -->
+	 <section class="banner-login">
+	  <div class="container">
+	  		  	
+	   <div class="row">
+	   
+	    <main class="main main-signup col-lg-12">
+	     <div class="col-lg-6 col-lg-offset-3 text-center">
+	     	
+              {% if error %}
+			 <script>
+				 alert("Either Username or Password is incorrect.")
+			 </script>
+			 {% endif %}
+        
+		  <div class="form-sign">
+		   <form method="post" action="">
+			   {% csrf_token %}
+		    <div class="form-head">
+			 <h3>Login</h3>
+			</div><!-- /.form-head -->
+            <div class="form-body"> 
+            	 
+            <!-- List group -->
+            <ul class="list-group">
+             <li class="list-group-item">
+              <div class="material-switch pull-center">
+	           <span class="pull-left">Voter</span>
+                <input id="someSwitchOptionDefault" name="user_type" type="checkbox"/>
+                <label for="someSwitchOptionDefault" class="label-success"></label>
+	           <span class="pull-right">Nominee</span>
+              </div>
+             </li>
+            </ul>           
+            	
+			 <div class="form-row">
+			  <div class="form-controls">
+			   <input name="mob" placeholder="Email" class="field" type="text">
+			  </div><!-- /.form-controls -->
+			 </div><!-- /.form-row -->
+
+			 <div class="form-row">
+			  <div class="form-controls">
+			   <input name="password" placeholder="Password" class="field" type="password">
+			  </div><!-- /.form-controls -->
+			 </div><!-- /.form-row -->
+			 
+			 <div class="form-row">
+			  <div class="material-switch pull-left">
+			   <input id="someSwitchOptionSuccess" name="remember" type="checkbox"/>
+			   <label for="someSwitchOptionSuccess" class="label-success"></label>
+			   <span>Remember Me</span>
+			  </div>
+			 </div><!-- /.form-row -->
+			 
+		    </div><!-- /.form-body -->
+
+			<div class="form-foot">
+			 <div class="form-actions">					
+              <input type="hidden" name="token" value="187570459dcc2d8cd8301b557726a17e" />
+			  <input value="Login" class="kafe-btn kafe-btn-default full-width" type="submit"><br></br>
+			  <a href="register.html" class="kafe-btn kafe-btn-danger full-width">Register</a>
+			 </div><!-- /.form-actions -->
+             <div class="form-head">
+			  <a href="{% url 'r' %}" class="more-link">Forgot Password?</a>
+			 </div>
+			</div><!-- /.form-foot -->
+		   </form>
+		   
+		  </div><!-- /.form-sign -->
+	     </div><!-- /.col-lg-6 -->
+        </main>
+		
+	   </div><!-- /.row -->
+	  </div><!-- /.container -->
+     </section><!-- /section --> 	
+
+	 
+     <!-- Include footer.php. Contains footer content. -->
+ 	 
+	
+	 <!-- ==============================================
+	 Footer Section
+	 =============================================== -->
+	 <footer class="footerWhite">
+
+      <!-- COPY RIGHT -->
+      <div class="clearfix copyRight">
+       <div class="container">
+        <div class="row">
+         
+		 <div class="col-xs-12">
+          <div class="copyRightWrapper">
+           <div class="row">
+		   
+            <div class="col-sm-5 col-sm-push-7 col-xs-12">
+			 <ul class="list-inline socialLink">
+			  <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+			  <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+			  <li><a href="#"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
+			  <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+			 </ul>
+            </div><!-- /col-sm-5 -->
+			
+		    <div class="col-sm-7 col-sm-pull-5 col-xs-12">
+			 <div class="copyRightText">
+			  <p>Copyright © Voting&nbsp; 2018. All Rights Reserved</p>
+			 </div>
+		    </div><!-- /col-sm-7 -->
+		  
+           </div><!-- /row -->
+          </div><!-- /copyRightWrapper -->
+         </div><!-- /col-xs-2 -->
+
+        </div><!-- /row -->
+       </div><!-- /container -->
+      </div><!-- /copyRight -->
+	  
+    </footer>	
+	
+    {% endblock %}

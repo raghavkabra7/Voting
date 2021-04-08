@@ -1,0 +1,123 @@
+     {% extends 'base.html' %}
+{% block body %}
+{% load static %}
+
+
+	  <!-- ==============================================
+	 Header
+	 =============================================== -->
+	 <header class="header-login top-page" style="
+
+  background: url('{% static 'source/admin/uploads/1517252709.jpg' %}') no-repeat center center fixed;
+  background-size: cover;
+  background-position: center center;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  color: #fff;
+  height: 30vh;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;">
+      <div class="container">
+	   <div class="content">
+	    <div class="row">
+	     <h1 class="revealOnScroll" data-animation="fadeInDown"> Voting</h1>
+        </div><!-- /.row -->
+       </div><!-- /.content -->
+	  </div><!-- /.container -->
+     </header><!-- /header -->
+	 
+     <!-- ==============================================
+     Banner Login Section
+     =============================================== -->
+	 <section class="banner-login">
+	  <div class="container">
+	  		  	
+	   <div class="row">
+	   
+	    <main class="main main-signup col-lg-12">
+	     <div class="col-lg-6 col-lg-offset-3 text-center">
+		
+	        	        
+	        	        
+		  				
+		  <div class="form-sign">
+		   <form method="post">
+		    <div class="form-head">
+			 <h3>Forgot Password?</h3>
+			</div><!-- /.form-head -->
+            <div class="form-body">          	
+             
+             <div class="form-row">
+			  <div class="form-controls">
+			   <input type="text" name="email" class="field" placeholder="Email">
+			  </div><!-- /.form-controls -->
+             </div><!-- /.form-row -->
+		   
+			 </div><!-- /.form-body -->
+	
+			 <div class="form-foot">
+			  <div class="form-actions">
+               <input type="hidden" name="token" value="c72ca28d7dc01d838a576edc9e4d8b20" />
+			   <input type="submit" name="register" value="Forgot Password" class="kafe-btn kafe-btn-default full-width">
+			  </div><!-- /.form-actions -->
+			 </div><!-- /.form-foot -->
+		   </form>
+		   
+		  </div><!-- /.form-sign -->
+	     </div><!-- /.col-lg-6 -->
+        </main>
+		
+	   </div><!-- /.row -->
+	  </div><!-- /.container -->
+     </section><!-- /section --> 	
+
+	 
+     <!-- Include footer.php. Contains footer content. -->
+ 	 
+	
+	 <!-- ==============================================
+	 Footer Section
+	 =============================================== -->
+	 <footer class="footerWhite">
+
+      <!-- COPY RIGHT -->
+      <div class="clearfix copyRight">
+       <div class="container">
+        <div class="row">
+         
+		 <div class="col-xs-12">
+          <div class="copyRightWrapper">
+           <div class="row">
+		   
+            <div class="col-sm-5 col-sm-push-7 col-xs-12">
+			 <ul class="list-inline socialLink">
+			  <li><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+			  <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+			  <li><a href="#"><i class="fa fa-pinterest-p" aria-hidden="true"></i></a></li>
+			  <li><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+			 </ul>
+            </div><!-- /col-sm-5 -->
+			
+		    <div class="col-sm-7 col-sm-pull-5 col-xs-12">
+			 <div class="copyRightText">
+			  <p>Copyright © Voting&nbsp; 2018. All Rights Reserved</p>
+			 </div>
+		    </div><!-- /col-sm-7 -->
+		  
+           </div><!-- /row -->
+          </div><!-- /copyRightWrapper -->
+         </div><!-- /col-xs-2 -->
+
+        </div><!-- /row -->
+       </div><!-- /container -->
+      </div><!-- /copyRight -->
+	  
+    </footer>	
+	
+           {% endblock %}
